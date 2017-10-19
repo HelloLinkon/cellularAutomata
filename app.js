@@ -64,6 +64,28 @@ function firstRandomRow(){
   });
 }
 
+function setMiddleOneBlack(){
+  for(var i=0; i<41; i++)
+  {
+     if(i == 20)
+       a.push(1);
+     else {
+       a.push(0);
+     }
+  }
+  // $(".ca").text(a);
+  a.forEach(function(each){
+
+    if(each === 0)
+      $(".row").append("<div class='white'></div>");
+    else {
+      $(".row").append("<div class='black'></div>");
+    }
+
+
+  });
+}
+
 //make 8 bit those are not
 function make8bit(bb){
    var makeup = ["0", "00", "000", "0000", "00000", "000000", "0000000"];
@@ -80,7 +102,8 @@ function make8bit(bb){
 
 // program start from here
 
-firstRandomRow();
+// firstRandomRow();
+setMiddleOneBlack();
 var cc = dec2bin(145);
 var bb = make8bit(cc);
 
