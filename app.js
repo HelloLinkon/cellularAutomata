@@ -4,9 +4,8 @@ function randomIntFromInterval(min,max)
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// rule is 145
-// binary of 145 is 1001001
-function setOfRulesFor145(lastrow, index){
+// rule for generation
+function setOfRules(lastrow, index){
 	if(index == 0)
 		return 0;
 	else if(index == 40)
@@ -41,6 +40,7 @@ function setOfRulesFor145(lastrow, index){
 
 }
 
+// convert to binary
 function dec2bin(dec){
     return (dec >>> 0).toString(2);
 }
@@ -64,27 +64,33 @@ function firstRandomRow(){
   });
 }
 
-// function make8bit(bb){
-//    var makeup = ["0", "00", "000", "0000", "00000", "000000", "0000000"];
-//    console.log(bb.length);
-//    if(bb.length <= 8)
-//    {
-//       console.log(makeup[(8 - bb.length) - 1]);
-//       return makeup[(8 - bb.length) - 1]+bb;
-//    }
-// }
+//make 8 bit those are not
+function make8bit(bb){
+   var makeup = ["0", "00", "000", "0000", "00000", "000000", "0000000"];
+   console.log(bb.length);
+   if(bb.length < 8)
+   {
+      console.log(makeup[(8 - bb.length) - 1]);
+      return makeup[(8 - bb.length) - 1]+bb;
+   }
+   else {
+     return bb;
+   }
+}
 
+// program start from here
 
 firstRandomRow();
-var bb = dec2bin(145);
+var cc = dec2bin(145);
+var bb = make8bit(cc);
 
 
 // generate 5 generation row
 // var value = Number(prompt("how many row you want to generate?"));
-for(var k = 0; k<100; k++){
+for(var k = 0; k<80; k++){
 	var b= [];
 	for(var j = 0; j < 41; j++){
-		b.push(setOfRulesFor145(a, j));
+		b.push(setOfRules(a, j));
 	}
 	// console.log(b);
   $(".ca").append('<div class="row'+ k +'"></div>');
